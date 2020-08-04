@@ -1,0 +1,29 @@
+<h1>so This is Home now</h1>
+<a style="color:red;" href="{% url 'posts:create' %}"> New Post </a>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+{% for post in posts.all %}
+
+<form method="POST" action="{% url 'posts:upvote' post.id %}">
+    {% csrf_token %}
+    <input type="submit" value="UP">
+</form></a>  {{ post.votes_total }}  <a href="#">DOWN
+</a> - <a href="{{ post.url }}">{{ post.title }} </a>
+<br/>
+<br/>
+<br/>
+<br/>
+{{ post.pub_date }} by {{ post.author.username }}
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+{% endfor %}
